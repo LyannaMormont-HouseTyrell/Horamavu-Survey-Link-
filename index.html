@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
-  <title>Survey Link · Smart Copy Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes, viewport-fit=cover">
+  <title>VioletDracarys · Smart Copy Tracker</title>
   <script>
-    const APP_VERSION = 3;
+    const APP_VERSION = 4;
     fetch("version.json?rand=" + Date.now())
       .then(res => res.json())
       .catch(() => {})
@@ -13,409 +13,501 @@
         if (data && APP_VERSION < data.latestVersion) {
           document.body.innerHTML = `
             <div style="font-family: system-ui, sans-serif; text-align: center; margin-top: 20vh; padding: 16px;">
-              <h2>New Update Available</h2>
+              <h2>✨ New Update Available</h2>
               <p>Please download the latest Horamavu Survey App</p>
-              <a href="${data.updateUrl}" style="background: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block; margin-top: 12px;">Download Update</a>
+              <a href="${data.updateUrl}" style="background: #7c3aed; color: white; padding: 12px 24px; border-radius: 999px; text-decoration: none; display: inline-block; margin-top: 12px; box-shadow: 0 4px 12px rgba(124,58,237,0.3);">Download Update</a>
             </div>`;
         }
       });
   </script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: #f5f7fa;
-      color: #1e293b;
-      padding: 12px;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(145deg, #faf5ff 0%, #f3e8ff 100%);
+      color: #2e1065;
+      padding: 16px;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: flex-start;
     }
+
     .container {
       max-width: 100%;
       width: 100%;
-      background: white;
-      border-radius: 24px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-      padding: 20px 16px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(0px);
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(91, 33, 182, 0.25), 0 0 0 1px rgba(139, 92, 246, 0.1);
+      padding: 24px 20px;
+      transition: all 0.2s ease;
     }
+
     h1 {
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      color: #0f172a;
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #6d28d9, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       margin-bottom: 4px;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
+
     h1 span {
-      background: #eef2ff;
-      color: #4f46e5;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 4px 8px;
-      border-radius: 20px;
+      background: #ede9fe;
+      color: #6b21a5;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 40px;
+      letter-spacing: normal;
     }
+
     .subhead {
-      color: #64748b;
-      margin-bottom: 20px;
-      font-size: 14px;
-      border-bottom: 1px solid #e9eef2;
-      padding-bottom: 16px;
+      color: #6b21a5;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #e9d5ff;
+      padding-bottom: 14px;
+      font-weight: 500;
     }
+
     .file-section {
-      background: #f8fafc;
-      border-radius: 20px;
-      padding: 18px 14px;
-      margin-bottom: 20px;
-      border: 1px solid #e2e8f0;
+      background: #faf5ff;
+      border-radius: 1.5rem;
+      padding: 20px 16px;
+      margin-bottom: 24px;
+      border: 1px solid #e9d5ff;
+      transition: box-shadow 0.2s;
     }
+
     .file-input-container {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
+
     .file-label {
       background: white;
-      border: 1px solid #cbd5e1;
-      color: #1e293b;
-      padding: 12px 16px;
-      border-radius: 30px;
-      font-size: 15px;
-      font-weight: 500;
+      border: 1.5px solid #d8b4fe;
+      color: #4c1d95;
+      padding: 14px 18px;
+      border-radius: 60px;
+      font-size: 0.95rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: 0.1s;
+      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       width: 100%;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     }
-    .file-label:active { background: #f1f5f9; transform: scale(0.98); }
+
+    .file-label:active {
+      background: #f3e8ff;
+      transform: scale(0.97);
+      border-color: #a855f7;
+    }
+
     .file-name {
-      color: #334155;
-      font-size: 14px;
+      color: #4b2a7a;
+      font-size: 0.85rem;
       background: white;
-      padding: 10px 14px;
-      border-radius: 30px;
-      border: 1px solid #e2e8f0;
+      padding: 12px 16px;
+      border-radius: 40px;
+      border: 1px solid #e9d5ff;
       word-break: break-all;
+      font-weight: 500;
     }
+
     input[type="file"] { display: none; }
+
     .button-group {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin: 12px 0 8px;
+      margin: 16px 0 8px;
     }
+
     .btn {
       font-family: inherit;
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 0.9rem;
+      font-weight: 600;
       padding: 12px 18px;
-      border-radius: 30px;
+      border-radius: 60px;
       border: none;
       background: white;
-      color: #1e293b;
-      border: 1px solid #d1d9e6;
+      color: #3b0764;
+      border: 1px solid #d8b4fe;
       cursor: pointer;
-      transition: 0.1s ease;
+      transition: all 0.2s ease;
       flex: 1 1 auto;
-      min-width: 120px;
+      min-width: 112px;
       text-align: center;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     }
+
     .btn-primary {
-      background: #2563eb;
-      border-color: #2563eb;
+      background: #7c3aed;
+      border-color: #7c3aed;
       color: white;
+      box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
     }
-    .btn-primary:active { background: #1d4ed8; transform: scale(0.97); }
-    .btn:active { background: #f1f5f9; transform: scale(0.97); }
-    .btn:disabled { opacity: 0.5; pointer-events: none; }
+
+    .btn-primary:active { background: #6d28d9; transform: scale(0.96); box-shadow: 0 2px 5px rgba(124,58,237,0.3);}
+    .btn:active { background: #f3e8ff; transform: scale(0.96); }
+
+    .btn:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      filter: grayscale(0.05);
+    }
+
     .status {
-      background: #eef2ff;
-      border-left: 4px solid #4f46e5;
-      color: #1e293b;
-      padding: 14px 16px;
-      border-radius: 14px;
+      background: #f3e8ff;
+      border-left: 5px solid #8b5cf6;
+      color: #2e1065;
+      padding: 14px 18px;
+      border-radius: 1.25rem;
       margin: 16px 0;
-      font-size: 14px;
+      font-size: 0.85rem;
+      font-weight: 500;
       display: flex;
       align-items: center;
       gap: 10px;
-      animation: fadeIn 0.2s;
+      animation: fadeSlide 0.25s ease;
     }
-    .status.error { background: #fee2e2; border-left-color: #dc2626; }
-    .status.warning { background: #fffbeb; border-left-color: #f59e0b; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
+
+    .status.error { background: #fee2e2; border-left-color: #e11d48; color: #881337; }
+    .status.warning { background: #ffedd5; border-left-color: #f97316; color: #7c2d12; }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-6px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     .filter-container {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: nowrap;
       overflow-x: auto;
-      padding: 8px 0 16px;
-      margin: 0 -4px;
+      padding: 8px 0 18px;
+      margin: 0 -6px;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+      scrollbar-width: thin;
     }
-    .filter-container::-webkit-scrollbar { display: none; }
+
     .filter-btn, .search-btn, .clear-search {
       background: white;
-      border: 1px solid #d1d9e6;
-      padding: 10px 18px;
-      border-radius: 40px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #1e293b;
+      border: 1px solid #d8b4fe;
+      padding: 10px 20px;
+      border-radius: 80px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4c1d95;
       cursor: pointer;
       white-space: nowrap;
-      transition: 0.1s;
+      transition: all 0.15s;
       flex-shrink: 0;
     }
+
     .filter-btn.active {
-      background: #2563eb;
-      border-color: #2563eb;
+      background: #8b5cf6;
+      border-color: #8b5cf6;
       color: white;
+      box-shadow: 0 6px 12px -6px #c084fc;
     }
-    .filter-btn:active, .search-btn:active, .clear-search:active { background: #e9eef2; transform: scale(0.96); }
+
+    .filter-btn:active, .search-btn:active, .clear-search:active {
+      background: #e9d5ff;
+      transform: scale(0.94);
+    }
+
     .search-container {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin: 16px 0 12px;
+      gap: 12px;
+      margin: 12px 0 16px;
     }
+
     .search-box {
-      padding: 14px 18px;
-      border-radius: 30px;
-      border: 1px solid #d1d9e6;
-      font-size: 16px;
+      padding: 14px 20px;
+      border-radius: 60px;
+      border: 1.5px solid #e9d5ff;
+      font-size: 0.95rem;
       width: 100%;
       background: white;
+      transition: all 0.2s;
+      font-weight: 500;
     }
+
     .search-box:focus {
       outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px #2563eb20;
+      border-color: #a855f7;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
     }
+
     .search-row {
       display: flex;
-      gap: 8px;
+      gap: 10px;
     }
     .search-row .search-btn, .search-row .clear-search { flex: 1; padding: 12px 0; }
+
     .table-container {
-      border-radius: 20px;
-      border: 1px solid #e2e8f0;
+      border-radius: 1.5rem;
+      border: 1px solid #e9d5ff;
       background: white;
       overflow-x: auto;
-      margin-top: 18px;
+      margin-top: 20px;
       -webkit-overflow-scrolling: touch;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 14px;
-      min-width: 500px;
+      font-size: 0.85rem;
+      min-width: 520px;
     }
+
     th {
-      background: #f1f5f9;
-      color: #334155;
-      font-weight: 600;
-      font-size: 13px;
-      padding: 14px 10px;
+      background: #faf5ff;
+      color: #4c1d95;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 16px 12px;
       text-align: left;
-      border-bottom: 1px solid #d4dce8;
+      border-bottom: 1.5px solid #e9d5ff;
       white-space: nowrap;
     }
+
     td {
-      padding: 14px 10px;
-      border-bottom: 1px solid #ecf1f7;
-      color: #1e293b;
+      padding: 14px 12px;
+      border-bottom: 1px solid #f3e8ff;
+      color: #2d1b4e;
     }
+
+    /* hide survey model + link columns for clean look (optional) but keep accessible */
     th:nth-child(3), td:nth-child(3),
     th:nth-child(4), td:nth-child(4) { display: none; }
-    th:nth-child(1), td:nth-child(1) { min-width: 110px; }
-    th:nth-child(2), td:nth-child(2) { min-width: 100px; }
-    th:nth-child(5), td:nth-child(5) { min-width: 110px; }
+
     .copy-btn {
       background: white;
-      border: 1px solid #cbd5e1;
-      color: #1e293b;
+      border: 1.5px solid #c084fc;
+      color: #6d28d9;
       padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: 500;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: 0.1s;
-      white-space: nowrap;
+      transition: 0.15s ease;
       width: 100%;
-      max-width: 100px;
+      max-width: 110px;
     }
-    .copy-btn:active { background: #f1f5f9; transform: scale(0.95); }
+    .copy-btn:active { background: #f3e8ff; transform: scale(0.94); }
     .copy-btn.copied {
-      background: #22c55e;
-      border-color: #22c55e;
+      background: #10b981;
+      border-color: #10b981;
       color: white;
-      cursor: default;
-      opacity: 0.8;
+      box-shadow: 0 2px 8px rgba(16,185,129,0.3);
     }
     .copy-btn.already-copied {
-      background: #9ca3af;
-      border-color: #6b7280;
-      color: white;
+      background: #cbd5e1;
+      border-color: #94a3b8;
+      color: #1e293b;
       cursor: not-allowed;
       opacity: 0.7;
     }
+
     .copy-flash {
       position: fixed;
-      background: #2563eb20;
+      background: radial-gradient(circle, #a78bfa, #c084fc);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
-      animation: flashFade 0.4s ease-out forwards;
+      animation: violetFlash 0.45s ease-out forwards;
     }
-    @keyframes flashFade {
-      0% { opacity: 0.6; transform: scale(0.6); }
-      100% { opacity: 0; transform: scale(2); }
+
+    @keyframes violetFlash {
+      0% { opacity: 0.7; transform: scale(0.3); background: #a855f7; }
+      100% { opacity: 0; transform: scale(2.2); background: #d8b4fe; }
     }
+
     .qr-modal {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.5);
-      backdrop-filter: blur(4px);
+      background: rgba(46, 16, 101, 0.5);
+      backdrop-filter: blur(8px);
       align-items: center;
       justify-content: center;
       z-index: 2000;
-      padding: 12px;
+      padding: 16px;
     }
+
     .qr-modal-content {
+      background: #ffffffdd;
       background: white;
-      border-radius: 32px;
+      border-radius: 2rem;
       padding: 24px 20px;
-      max-width: 480px;
+      max-width: 500px;
       width: 100%;
-      max-height: 90vh;
+      max-height: 85vh;
       overflow-y: auto;
-      box-shadow: 0 30px 60px -20px #0f172a;
+      box-shadow: 0 30px 50px -20px #2e1065;
+      border: 1px solid #e9d5ff;
     }
+
     .qr-modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
+
     .close-modal {
-      background: #f1f5f9;
+      background: #f3e8ff;
       border: none;
       font-size: 24px;
       width: 44px;
       height: 44px;
       border-radius: 50%;
       cursor: pointer;
+      transition: 0.15s;
+      color: #6b21a5;
     }
+    .close-modal:active { background: #e9d5ff; transform: scale(0.92);}
+
     .qr-display {
-      background: #f8fafc;
-      border-radius: 24px;
+      background: #fbfaff;
+      border-radius: 1.5rem;
       padding: 20px;
-      margin: 10px 0;
-      border: 1px solid #e2e8f0;
+      margin: 12px 0;
+      border: 1px solid #e9d5ff;
       overflow: hidden;
     }
+
     .qr-slides {
       display: flex;
-      transition: transform 0.2s ease;
+      transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
+
     .qr-slide {
       min-width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
+
     .qr-code {
       background: white;
       padding: 10px;
-      border-radius: 16px;
+      border-radius: 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
     }
-    .qr-code img { max-width: 180px; height: auto; }
+
+    .qr-code img { max-width: 160px; height: auto; }
+
     .qr-nav {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin: 16px 0 8px;
+      gap: 18px;
+      margin: 20px 0 8px;
     }
     .qr-nav-btn {
       background: white;
-      border: 1px solid #cfddee;
-      padding: 12px 24px;
-      border-radius: 40px;
+      border: 1px solid #c084fc;
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #6d28d9;
       cursor: pointer;
-      font-weight: 500;
-      flex: 1;
-      max-width: 140px;
     }
-    .qr-counter { text-align: center; font-weight: 500; margin-top: 8px; }
-    .bottom-note { text-align: center; font-size: 12px; color: #94a3b8; margin-top: 24px; }
+
     .copy-stats {
-      font-size: 12px;
-      background: #f1f5f9;
-      padding: 6px 12px;
-      border-radius: 20px;
+      font-size: 0.75rem;
+      background: #ede9fe;
+      padding: 6px 14px;
+      border-radius: 30px;
       display: inline-block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #4c1d95;
+    }
+
+    .bottom-note {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #8b5cf6;
+      margin-top: 20px;
+      font-weight: 500;
+    }
+
+    button, .btn, .filter-btn, .copy-btn {
+      cursor: pointer;
+      user-select: none;
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>Dracarys <span>Fire & Blood · Copy Tracker</span></h1>
-  <div class="subhead">Upload Excel · Links tracked · Already copied = blocked</div>
+  <h1>🟣 Dracarys <span></span></h1>
+  <div class="subhead"></div>
 
   <div class="file-section">
     <div class="file-input-container">
-      <label for="fileInput" class="file-label">📁 Choose Excel file</label>
+      <label for="fileInput" class="file-label">📂 Choose Excel file (XLSX / XLS)</label>
       <input type="file" id="fileInput" accept=".xlsx, .xls">
-      <div class="file-name" id="fileName">No file selected</div>
+      <div class="file-name" id="fileName">📄 No file selected</div>
     </div>
     <div class="button-group">
-      <button class="btn btn-primary" id="generateBtn" onclick="processFile()" disabled>Generate</button>
-      <button class="btn" onclick="clearData()">Clear All</button>
+      <button class="btn btn-primary" id="generateBtn" disabled>✨ Generate Links</button>
+      <button class="btn" id="clearAllBtn">🗑️ Clear All</button>
     </div>
   </div>
 
-  <div id="processing" style="display: none; margin: 8px 0; color: #2563eb; font-weight: 500; text-align: center;">⏳ processing ...</div>
+  <div id="processing" style="display: none; margin: 8px 0; color:#a855f7; font-weight:600; text-align:center;">⏳ Processing ...</div>
   <div id="status" class="status" style="display: none;"></div>
 
-  <div class="button-group" style="margin-bottom: 4px;">
-    <button class="btn" id="copyAllBtn" onclick="copyAllLinks()" disabled>📋 Copy all fresh</button>
-    <button class="btn" id="exportBtn" onclick="exportToCSV()" disabled>⬇️ CSV</button>
-    <button class="btn" id="openQRBtn" onclick="openQRModal()" disabled>📲 QR</button>
+  <div class="button-group" style="margin-bottom: 6px;">
+    <button class="btn" id="copyAllBtn" disabled>📋 Copy all fresh</button>
+    <button class="btn" id="exportBtn" disabled>⬇️ Export CSV</button>
+    <button class="btn" id="openQRBtn" disabled>📲 QR Gallery</button>
   </div>
 
   <div id="copyStatsDisplay" class="copy-stats" style="display: none;"></div>
 
   <div class="filter-container" id="salesTypeFilters" style="display: none;">
-    <button class="filter-btn active" data-type="all">All</button>
-    <button class="filter-btn" data-type="DINE-IN">Dine-in</button>
-    <button class="filter-btn" data-type="TAKEAWAY">Takeaway</button>
-    <button class="filter-btn" data-type="DELIVERY">Delivery</button>
+    <button class="filter-btn active" data-type="all">✨ All</button>
+    <button class="filter-btn" data-type="DINE-IN">🍽️ Dine-in</button>
+    <button class="filter-btn" data-type="TAKEAWAY">🥡 Takeaway</button>
+    <button class="filter-btn" data-type="DELIVERY">🚚 Delivery</button>
   </div>
 
   <div class="search-container">
-    <input type="text" id="searchBox" class="search-box" placeholder="Search Order ID (e.g. 5031)" disabled>
+    <input type="text" id="searchBox" class="search-box" placeholder="Search Receipt / Order ID (e.g., 5031)" disabled>
     <div class="search-row">
-      <button class="search-btn" id="searchBtn" onclick="searchOrderId()" disabled>Search</button>
-      <button class="clear-search" id="clearSearchBtn" onclick="clearSearch()" disabled>Clear</button>
+      <button class="search-btn" id="searchBtn" disabled>🔍 Search</button>
+      <button class="clear-search" id="clearSearchBtn" disabled>🧹 Clear</button>
     </div>
   </div>
 
@@ -425,12 +517,12 @@
       <tbody></tbody>
     </table>
   </div>
-  <div class="bottom-note">✓ Once copied, link gets permanently locked for this file session. Re-upload same file → shows "Already copied".</div>
+  <div class="bottom-note">🔒 Once a link is copied, it becomes locked for this exact file (persistent across sessions). Re-upload marks as "Already copied".</div>
 </div>
 
 <div class="qr-modal" id="qrModal">
   <div class="qr-modal-content">
-    <div class="qr-modal-header"><h2 class="qr-modal-title">QR codes</h2><button class="close-modal" onclick="closeQRModal()">✕</button></div>
+    <div class="qr-modal-header"><h2 style="color:#5b21b6;">📱 Violet QR Codes</h2><button class="close-modal" onclick="closeQRModal()">✕</button></div>
     <div class="filter-container" id="qrFilters" style="padding-top: 0;">
       <button class="filter-btn active" data-type="all">All</button>
       <button class="filter-btn" data-type="DINE-IN">Dine-in</button>
@@ -438,8 +530,8 @@
       <button class="filter-btn" data-type="DELIVERY">Delivery</button>
     </div>
     <div class="qr-display" id="qrDisplay"><div class="qr-slides" id="qrSlides"></div></div>
-    <div class="qr-nav"><button class="qr-nav-btn" id="prevBtn" onclick="prevQR()">← Prev</button><button class="qr-nav-btn" id="nextBtn" onclick="nextQR()">Next →</button></div>
-    <div class="qr-counter" id="qrCounter">1 / 0</div>
+    <div class="qr-nav"><button class="qr-nav-btn" id="prevBtn">← Prev</button><button class="qr-nav-btn" id="nextBtn">Next →</button></div>
+    <div class="qr-counter" id="qrCounter" style="text-align:center; margin-top:10px; font-weight:600;">1 / 0</div>
   </div>
 </div>
 
@@ -447,79 +539,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 
 <script>
-  // ----- PERSISTENT COPY TRACKING (per file identity) -----
-  // Use localStorage to store an object: key = fileSignature (hash of filename + lastModified + size) or simple filename+modified
-  // But requirement: "if user uploaded same file or same name file, already copied links should show as already copied"
-  // We'll generate a unique fileID based on filename + file size + lastModified. For same file (even renamed same content) we track separately.
-  // We'll store a map: copiedLinkSet: Set of generated link strings that have been copied in this file context.
+  // ----- Violet Edition: smooth copy tracker with persistent lock per file id -----
   let currentFileID = null;
-  let copiedLinksArchive = new Set(); // stores link strings that were already copied for CURRENT loaded file
-  let globalCopiedTracker = new Map(); // fileID -> Set(links)
-  
-  // Load existing tracker from localStorage
-  function loadCopiedTracker() {
-    const stored = localStorage.getItem('survey_link_copied_tracker');
-    if (stored) {
-      try {
-        const obj = JSON.parse(stored);
-        for (let [fid, linksArr] of Object.entries(obj)) {
-          globalCopiedTracker.set(fid, new Set(linksArr));
-        }
-      } catch(e) {}
-    }
-  }
-  function saveCopiedTracker() {
-    const obj = {};
-    for (let [fid, set] of globalCopiedTracker.entries()) {
-      obj[fid] = Array.from(set);
-    }
-    localStorage.setItem('survey_link_copied_tracker', JSON.stringify(obj));
-  }
-  loadCopiedTracker();
-  
-  // generate file fingerprint
-  function getFileID(file) {
-    return `${file.name}_${file.size}_${file.lastModified}`;
-  }
-  
-  // Main state
-  let currentData = [];        // { receiptNo, salesType, surveyModel, link, linkCopiedFlag (bool for UI) }
+  let copiedLinksArchive = new Set();
+  let globalCopiedTracker = new Map();
+  let currentData = [];
   let filteredData = [];
   let currentQRData = [];
   let currentQRIndex = 0;
   const storeID = "91KDIPL879-01";
-  
-  function showStatus(msg, type = 'success') {
+
+  function loadTracker() { const stored = localStorage.getItem('violet_survey_tracker'); if(stored) { try{ const obj=JSON.parse(stored); for(let[fid,arr] of Object.entries(obj)) globalCopiedTracker.set(fid, new Set(arr)); }catch(e){} } }
+  function saveTracker() { const obj={}; for(let[fid,set] of globalCopiedTracker.entries()) obj[fid]=Array.from(set); localStorage.setItem('violet_survey_tracker', JSON.stringify(obj)); }
+  loadTracker();
+
+  function getFileID(file) { return `${file.name}_${file.size}_${file.lastModified}`; }
+
+  function showStatus(msg, type='success') {
     const el = document.getElementById('status');
-    el.textContent = msg;
-    el.className = `status ${type}`;
-    el.style.display = 'flex';
+    el.textContent = msg; el.className = `status ${type}`; el.style.display = 'flex';
     setTimeout(() => { if(el.style.display === 'flex') el.style.display = 'none'; }, 2800);
   }
-  
-  function triggerCopyFlash(x, y) {
-    const flash = document.createElement('div');
-    flash.className = 'copy-flash';
-    flash.style.left = (x - 25) + 'px';
-    flash.style.top = (y - 25) + 'px';
-    flash.style.width = '50px';
-    flash.style.height = '50px';
-    document.body.appendChild(flash);
-    setTimeout(() => flash.remove(), 400);
-  }
-  
-  function convertExcelDate(serial) {
-    const date = new Date((serial - 25569) * 86400 * 1000);
-    return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
-  }
-  function convertExcelTime(serial) {
-    const total = Math.round(serial * 24 * 60 * 60 * 1000);
-    const hours = String(Math.floor(total / 3600000)).padStart(2,'0');
-    const minutes = String(Math.floor((total % 3600000) / 60000)).padStart(2,'0');
-    const seconds = String(Math.floor((total % 60000) / 1000)).padStart(2,'0');
-    return `${hours}:${minutes}:${seconds}`;
-  }
-  
+
+  function triggerCopyFlash(x,y) { const flash=document.createElement('div'); flash.className='copy-flash'; flash.style.left=(x-28)+'px'; flash.style.top=(y-28)+'px'; flash.style.width='56px'; flash.style.height='56px'; document.body.appendChild(flash); setTimeout(()=>flash.remove(),420); }
+
+  function convertExcelDate(serial) { const date = new Date((serial - 25569) * 86400 * 1000); return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`; }
+  function convertExcelTime(serial) { const total = Math.round(serial * 24 * 60 * 60 * 1000); return `${String(Math.floor(total / 3600000)).padStart(2,'0')}:${String(Math.floor((total % 3600000) / 60000)).padStart(2,'0')}:${String(Math.floor((total % 60000) / 1000)).padStart(2,'0')}`; }
+
   function generateSurveyLink(row) {
     const receiptNo = row['Receipt No.'];
     const salesType = row['Sales Type'];
@@ -537,285 +583,137 @@
     const data = { S: storeID, OI: orderID, D: date, TM: time, DTM: iso, TI: orderID, OT: numericOT, SM: surveyModel, PH: phone };
     return `https://customer.kfc-listens.com/jfe/form/SV_8bHC0noyvM3jPWC?Q_EED=${btoa(JSON.stringify(data))}`;
   }
-  
-  function processFile() {
-    const file = document.getElementById('fileInput').files[0];
-    if (!file) return showStatus('Select a file', 'error');
-    const fileID = getFileID(file);
-    currentFileID = fileID;
-    // load copied links for this file from global tracker
-    copiedLinksArchive = globalCopiedTracker.get(fileID) || new Set();
-    
-    document.getElementById('processing').style.display = 'block';
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      try {
-        const wb = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
-        const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
-        const filteredRaw = rows.filter(r => !(r['POS Receipt No.']||'').match(/K281SWG|K281ZMT|K281MAGIC/));
-        const newData = [];
-        filteredRaw.forEach(r => {
-          const link = generateSurveyLink(r);
-          if (link) {
-            const alreadyCopied = copiedLinksArchive.has(link);
-            newData.push({
-              receiptNo: r['Receipt No.'],
-              salesType: r['Sales Type'],
-              surveyModel: link.includes('SM=6.0') ? '6.0' : link.includes('SM=4.0') ? '4.0' : '3.0',
-              link: link,
-              copied: alreadyCopied,     // true if already copied previously
-              isNewlyCopied: false
-            });
-          }
-        });
-        currentData = newData;
-        filteredData = [];
-        displayData(currentData);
-        document.getElementById('processing').style.display = 'none';
-        
-        const copiedCount = currentData.filter(d => d.copied).length;
-        let msg = `Loaded ${currentData.length} records. Already copied: ${copiedCount}`;
-        if (copiedCount > 0) msg += ` (locked, cannot copy again)`;
-        showStatus(msg, copiedCount > 0 ? 'warning' : 'success');
-        
-        document.getElementById('copyAllBtn').disabled = false;
-        document.getElementById('exportBtn').disabled = false;
-        document.getElementById('openQRBtn').disabled = false;
-        document.getElementById('searchBox').disabled = false;
-        document.getElementById('searchBtn').disabled = false;
-        document.getElementById('clearSearchBtn').disabled = false;
-        document.getElementById('salesTypeFilters').style.display = 'flex';
-        
-        const statsDiv = document.getElementById('copyStatsDisplay');
-        statsDiv.style.display = 'block';
-        statsDiv.innerHTML = `🔒 Already copied: ${copiedCount} / ${currentData.length} (re-upload prevents re-copy)`;
-        
-        generateQRCodes(currentData);
-      } catch (err) {
-        document.getElementById('processing').style.display = 'none';
-        showStatus('Error: ' + err.message, 'error');
-      }
-    };
-    reader.readAsArrayBuffer(file);
-  }
-  
-  // mark a specific link as copied permanently (store in tracker)
-  function markLinkAsCopied(link, receiptId) {
-    if (!currentFileID) return false;
-    if (copiedLinksArchive.has(link)) return false; // already tracked
+
+  function markLinkAsCopied(link) {
+    if(!currentFileID) return false;
+    if(copiedLinksArchive.has(link)) return false;
     copiedLinksArchive.add(link);
     globalCopiedTracker.set(currentFileID, copiedLinksArchive);
-    saveCopiedTracker();
-    // update in currentData
-    const item = currentData.find(d => d.link === link);
-    if (item) {
-      item.copied = true;
-      item.isNewlyCopied = true;
-    }
+    saveTracker();
+    const item = currentData.find(d=>d.link===link);
+    if(item) item.copied=true;
     return true;
   }
-  
+
   function displayData(data) {
     const tbody = document.querySelector('#linkTable tbody');
     tbody.innerHTML = '';
-    data.forEach((item, idx) => {
+    data.forEach(item => {
       const tr = document.createElement('tr');
-      const isAlready = item.copied === true;
-      const btnText = isAlready ? '✓ Already copied' : 'Copy';
-      const btnClass = isAlready ? 'copy-btn already-copied' : 'copy-btn';
-      tr.innerHTML = `
-         <td>${item.receiptNo}</td>
-         <td>${item.salesType}</td>
-         <td>${item.surveyModel}</td>
-         <td>${item.link}</td>
-         <td><button class="${btnClass}" data-link="${item.link}" data-receipt="${item.receiptNo}" ${isAlready ? 'disabled' : ''}>${btnText}</button></td>`;
+      const isLocked = item.copied === true;
+      const btnText = isLocked ? '🔒 Locked' : '📋 Copy';
+      const btnClass = isLocked ? 'copy-btn already-copied' : 'copy-btn';
+      tr.innerHTML = `<td>${item.receiptNo}</td><td>${item.salesType}</td><td>${item.surveyModel}</td><td style="display:none;">${item.link}</td><td><button class="${btnClass}" data-link="${item.link}" data-receipt="${item.receiptNo}" ${isLocked ? 'disabled' : ''}>${btnText}</button></td>`;
       tbody.appendChild(tr);
     });
-    // attach fresh listeners
     document.querySelectorAll('.copy-btn:not(.already-copied)').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const link = btn.dataset.link;
         const receipt = btn.dataset.receipt;
-        if (!link) return;
-        // check if already copied from archive again for safety
-        if (copiedLinksArchive.has(link)) {
-          showStatus(`Receipt ${receipt} already copied earlier! Cannot copy again.`, 'error');
-          btn.textContent = 'Already copied';
-          btn.classList.add('already-copied');
-          btn.disabled = true;
-          // sync UI data
-          const target = currentData.find(d => d.link === link);
-          if(target) target.copied = true;
-          displayData(filteredData.length ? filteredData : currentData);
-          return;
-        }
-        // perform copy
-        const ta = document.createElement('textarea');
-        ta.value = link;
-        ta.style.position = 'fixed';
-        ta.style.left = '-999px';
-        document.body.appendChild(ta);
-        ta.select();
-        let copySuccess = false;
-        try {
-          copySuccess = document.execCommand('copy');
-        } catch(err) { copySuccess = false; }
+        if(!link) return;
+        if(copiedLinksArchive.has(link)) { showStatus(`🔐 Receipt ${receipt} already locked!`, 'error'); btn.textContent='Locked'; btn.disabled=true; btn.classList.add('already-copied'); const t=currentData.find(d=>d.link===link); if(t) t.copied=true; displayData(filteredData.length?filteredData:currentData); return; }
+        const ta = document.createElement('textarea'); ta.value=link; ta.style.position='fixed'; ta.style.left='-9999px'; document.body.appendChild(ta); ta.select();
+        let copied=false;
+        try{ copied=document.execCommand('copy'); } catch(e){ copied=false; }
         document.body.removeChild(ta);
-        if (copySuccess) {
-          markLinkAsCopied(link, receipt);
-          btn.textContent = 'Copied!';
-          btn.classList.add('copied');
-          btn.disabled = true;
-          const rect = btn.getBoundingClientRect();
-          triggerCopyFlash(rect.left + rect.width/2, rect.top + rect.height/2);
-          showStatus(`✓ Link for ${receipt} copied & permanently locked for this file`);
-          // update stats
-          const statsDiv = document.getElementById('copyStatsDisplay');
-          const newCopiedCount = currentData.filter(d => d.copied).length;
-          statsDiv.innerHTML = `🔒 Already copied: ${newCopiedCount} / ${currentData.length} (re-upload prevents re-copy)`;
-          // refresh current view to reflect status
-          if (filteredData.length) {
-            filteredData = filteredData.map(d => d.link === link ? {...d, copied: true} : d);
-            displayData(filteredData);
-          } else {
-            displayData(currentData);
-          }
-        } else {
-          showStatus('Copy failed', 'error');
-        }
+        if(copied){
+          markLinkAsCopied(link);
+          btn.textContent='✨ Copied!'; btn.classList.add('copied'); btn.disabled=true;
+          const rect=btn.getBoundingClientRect(); triggerCopyFlash(rect.left+rect.width/2, rect.top+rect.height/2);
+          showStatus(`✅ ${receipt} copied & permanently locked`, 'success');
+          const statsDiv=document.getElementById('copyStatsDisplay');
+          const newCopiedCount=currentData.filter(d=>d.copied).length;
+          statsDiv.innerHTML=`🔒 Locked: ${newCopiedCount} / ${currentData.length} (persistent)`;
+          if(filteredData.length){ filteredData=filteredData.map(d=>d.link===link?{...d,copied:true}:d); displayData(filteredData);}
+          else displayData(currentData);
+        } else showStatus('❌ Copy failed', 'error');
       });
     });
   }
-  
-  function copyAllLinks() {
-    const dataSource = filteredData.length ? filteredData : currentData;
-    const uncopiedLinks = dataSource.filter(d => !d.copied);
-    if (uncopiedLinks.length === 0) {
-      showStatus('No fresh links to copy — all already copied before!', 'warning');
-      return;
-    }
-    const allFreshLinks = uncopiedLinks.map(d => d.link).join('\n');
-    const ta = document.createElement('textarea');
-    ta.value = allFreshLinks;
-    ta.style.position = 'fixed';
-    ta.style.left = '-999px';
-    document.body.appendChild(ta);
-    ta.select();
-    try {
-      if (document.execCommand('copy')) {
-        uncopiedLinks.forEach(item => {
-          if (!copiedLinksArchive.has(item.link)) {
-            markLinkAsCopied(item.link, item.receiptNo);
-          }
+
+  function processFile() {
+    const file = document.getElementById('fileInput').files[0];
+    if(!file) return showStatus('Select an Excel file', 'error');
+    const fileID = getFileID(file);
+    currentFileID = fileID;
+    copiedLinksArchive = globalCopiedTracker.get(fileID) || new Set();
+    document.getElementById('processing').style.display = 'block';
+    const reader = new FileReader();
+    reader.onload = function(e){
+      try{
+        const wb = XLSX.read(new Uint8Array(e.target.result), {type:'array'});
+        const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+        const filteredRaw = rows.filter(r => !(r['POS Receipt No.']||'').match(/K281SWG|K281ZMT|K281MAGIC/));
+        const newData=[];
+        filteredRaw.forEach(r => {
+          const link = generateSurveyLink(r);
+          if(link) newData.push({ receiptNo: r['Receipt No.'], salesType: r['Sales Type'], surveyModel: link.includes('SM=6.0')?'6.0':link.includes('SM=4.0')?'4.0':'3.0', link: link, copied: copiedLinksArchive.has(link) });
         });
-        const rect = document.getElementById('copyAllBtn').getBoundingClientRect();
-        triggerCopyFlash(rect.left + rect.width/2, rect.top + rect.height/2);
-        showStatus(`✓ Copied ${uncopiedLinks.length} fresh links & locked them`);
-        // refresh view
-        if (filteredData.length) {
-          filteredData = filteredData.map(d => uncopiedLinks.find(u => u.link === d.link) ? {...d, copied: true} : d);
-          displayData(filteredData);
-        } else {
-          displayData(currentData);
-        }
-        const newCopiedCount = currentData.filter(d => d.copied).length;
-        document.getElementById('copyStatsDisplay').innerHTML = `🔒 Already copied: ${newCopiedCount} / ${currentData.length} (re-upload prevents re-copy)`;
-      } else showStatus('Copy all failed', 'error');
-    } catch (err) { showStatus('Error', 'error'); }
+        currentData = newData; filteredData=[];
+        displayData(currentData);
+        document.getElementById('processing').style.display='none';
+        const lockedCount=currentData.filter(d=>d.copied).length;
+        showStatus(`✨ Loaded ${currentData.length} records. Locked links: ${lockedCount}`, lockedCount>0?'warning':'success');
+        document.getElementById('copyAllBtn').disabled=false; document.getElementById('exportBtn').disabled=false; document.getElementById('openQRBtn').disabled=false;
+        document.getElementById('searchBox').disabled=false; document.getElementById('searchBtn').disabled=false; document.getElementById('clearSearchBtn').disabled=false;
+        document.getElementById('salesTypeFilters').style.display='flex';
+        const statsDiv=document.getElementById('copyStatsDisplay'); statsDiv.style.display='block';
+        statsDiv.innerHTML=`🔒 Locked: ${lockedCount} / ${currentData.length} (re-upload prevents re-copy)`;
+        generateQRCodes(currentData);
+      } catch(err){ document.getElementById('processing').style.display='none'; showStatus('Error: '+err.message,'error');}
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  function copyAllLinks(){
+    const dataSource = filteredData.length?filteredData:currentData;
+    const fresh = dataSource.filter(d=>!d.copied);
+    if(fresh.length===0) return showStatus('No fresh links — all locked!','warning');
+    const allLinks = fresh.map(d=>d.link).join('\n');
+    const ta=document.createElement('textarea'); ta.value=allLinks; ta.style.position='fixed'; ta.style.left='-999px'; document.body.appendChild(ta); ta.select();
+    let ok=false; try{ ok=document.execCommand('copy'); } catch(e){ ok=false; }
     document.body.removeChild(ta);
+    if(ok){
+      fresh.forEach(item=>{ if(!copiedLinksArchive.has(item.link)) markLinkAsCopied(item.link); });
+      const rect=document.getElementById('copyAllBtn').getBoundingClientRect(); triggerCopyFlash(rect.left+rect.width/2, rect.top+rect.height/2);
+      showStatus(`✅ Copied ${fresh.length} fresh links & locked permanently`);
+      if(filteredData.length){ filteredData=filteredData.map(d=>fresh.some(f=>f.link===d.link)?{...d,copied:true}:d); displayData(filteredData); }
+      else displayData(currentData);
+      const newLocked=currentData.filter(d=>d.copied).length;
+      document.getElementById('copyStatsDisplay').innerHTML=`🔒 Locked: ${newLocked} / ${currentData.length}`;
+    } else showStatus('Copy all failed','error');
   }
-  
-  function exportToCSV() {
-    const dataSource = filteredData.length ? filteredData : currentData;
-    if (!dataSource.length) return;
-    let csv = 'Receipt No.,Sales Type,Survey Model,Generated Link,Already Copied\n';
-    dataSource.forEach(r => csv += `"${r.receiptNo}","${r.salesType}","${r.surveyModel}","${r.link}","${r.copied ? 'YES' : 'NO'}"\n`);
-    const blob = new Blob([csv], {type: 'text/csv'});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = 'survey_links_with_status.csv'; a.click();
-    showStatus('CSV exported with copy status');
+
+  function exportToCSV(){
+    const source=filteredData.length?filteredData:currentData;
+    if(!source.length) return;
+    let csv='Receipt No.,Sales Type,Survey Model,Generated Link,Locked\n';
+    source.forEach(r=>csv+=`"${r.receiptNo}","${r.salesType}","${r.surveyModel}","${r.link}","${r.copied?'LOCKED':'FRESH'}"\n`);
+    const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='violet_survey_status.csv'; a.click(); showStatus('📎 CSV exported');
   }
-  
-  function searchOrderId() {
-    const term = document.getElementById('searchBox').value.trim();
-    if (!term) return;
-    filteredData = currentData.filter(d => d.receiptNo.includes(term));
-    displayData(filteredData);
-    showStatus(`Found ${filteredData.length}`);
-  }
-  function clearSearch() {
-    document.getElementById('searchBox').value = '';
-    filteredData = [];
-    displayData(currentData);
-    showStatus('All records');
-  }
-  
-  function generateQRCodes(data) {
-    currentQRData = data;
-    const slides = document.getElementById('qrSlides');
-    slides.innerHTML = '';
-    data.forEach((item) => {
-      const slide = document.createElement('div'); slide.className = 'qr-slide';
-      const qrDiv = document.createElement('div'); qrDiv.className = 'qr-code';
-      const qr = qrcode(0, 'M'); qr.addData(item.link); qr.make();
-      qrDiv.innerHTML = qr.createImgTag(4);
-      const info = document.createElement('div'); info.style.fontSize = '14px'; info.innerText = `${item.receiptNo} – ${item.salesType} ${item.copied ? '🔒' : '🟢'}`;
-      slide.appendChild(qrDiv); slide.appendChild(info);
-      slides.appendChild(slide);
-    });
-    currentQRIndex = 0; updateQRSlides(); updateQRCounter();
-  }
-  function openQRModal() { document.getElementById('qrModal').style.display = 'flex'; generateQRCodes(currentQRData); }
-  function closeQRModal() { document.getElementById('qrModal').style.display = 'none'; }
-  function nextQR() { if (currentQRIndex < currentQRData.length-1) { currentQRIndex++; updateQRSlides(); } }
-  function prevQR() { if (currentQRIndex > 0) { currentQRIndex--; updateQRSlides(); } }
-  function updateQRSlides() { document.getElementById('qrSlides').style.transform = `translateX(-${currentQRIndex*100}%)`; updateQRCounter(); }
-  function updateQRCounter() { document.getElementById('qrCounter').innerText = `${currentQRIndex+1} / ${currentQRData.length}`; }
-  
-  document.querySelectorAll('#salesTypeFilters .filter-btn').forEach(b => {
-    b.addEventListener('click', function() {
-      document.querySelectorAll('#salesTypeFilters .filter-btn').forEach(bb => bb.classList.remove('active'));
-      this.classList.add('active');
-      const type = this.dataset.type;
-      if (type === 'all') displayData(currentData);
-      else displayData(currentData.filter(d => d.salesType === type));
-    });
-  });
-  document.querySelectorAll('#qrFilters .filter-btn').forEach(b => {
-    b.addEventListener('click', function() {
-      document.querySelectorAll('#qrFilters .filter-btn').forEach(bb => bb.classList.remove('active'));
-      this.classList.add('active');
-      const type = this.dataset.type;
-      if (type === 'all') generateQRCodes(currentData);
-      else generateQRCodes(currentData.filter(d => d.salesType === type));
-    });
-  });
-  
-  function clearData() {
-    currentData = []; filteredData = []; currentQRData = [];
-    document.querySelector('#linkTable tbody').innerHTML = '';
-    document.getElementById('fileInput').value = '';
-    document.getElementById('fileName').textContent = 'No file selected';
-    document.getElementById('copyAllBtn').disabled = true;
-    document.getElementById('exportBtn').disabled = true;
-    document.getElementById('openQRBtn').disabled = true;
-    document.getElementById('searchBox').disabled = true;
-    document.getElementById('searchBtn').disabled = true;
-    document.getElementById('clearSearchBtn').disabled = true;
-    document.getElementById('salesTypeFilters').style.display = 'none';
-    document.getElementById('searchBox').value = '';
-    document.getElementById('copyStatsDisplay').style.display = 'none';
-    closeQRModal();
-    showStatus('Cleared all data (copy history remains per file)');
-  }
-  
-  document.getElementById('fileInput').addEventListener('change', function(e) {
-    const name = e.target.files[0]?.name || 'No file selected';
-    document.getElementById('fileName').textContent = name;
-    document.getElementById('generateBtn').disabled = !e.target.files.length;
-  });
-  document.getElementById('searchBox').addEventListener('keyup', (e) => { if (e.key === 'Enter') searchOrderId(); });
-  window.addEventListener('click', (e) => { if (e.target === document.getElementById('qrModal')) closeQRModal(); });
+
+  function searchOrderId(){ const term=document.getElementById('searchBox').value.trim(); if(term){ filteredData=currentData.filter(d=>d.receiptNo.includes(term)); displayData(filteredData); showStatus(`Found ${filteredData.length}`); } }
+  function clearSearch(){ document.getElementById('searchBox').value=''; filteredData=[]; displayData(currentData); showStatus('All records'); }
+
+  function generateQRCodes(data){ currentQRData=data; const slides=document.getElementById('qrSlides'); slides.innerHTML=''; data.forEach(item=>{ const slide=document.createElement('div'); slide.className='qr-slide'; const qrDiv=document.createElement('div'); qrDiv.className='qr-code'; const qr=qrcode(0,'M'); qr.addData(item.link); qr.make(); qrDiv.innerHTML=qr.createImgTag(4); const info=document.createElement('div'); info.style.fontSize='0.8rem'; info.style.fontWeight='500'; info.innerText=`${item.receiptNo} – ${item.salesType} ${item.copied?'🔒':'🟢'}`; slide.appendChild(qrDiv); slide.appendChild(info); slides.appendChild(slide); }); currentQRIndex=0; updateQRSlides(); updateQRCounter(); }
+  function openQRModal(){ document.getElementById('qrModal').style.display='flex'; if(currentData.length) generateQRCodes(currentData); }
+  function closeQRModal(){ document.getElementById('qrModal').style.display='none'; }
+  function nextQR(){ if(currentQRIndex<currentQRData.length-1){ currentQRIndex++; updateQRSlides(); } }
+  function prevQR(){ if(currentQRIndex>0){ currentQRIndex--; updateQRSlides(); } }
+  function updateQRSlides(){ document.getElementById('qrSlides').style.transform=`translateX(-${currentQRIndex*100}%)`; updateQRCounter(); }
+  function updateQRCounter(){ document.getElementById('qrCounter').innerText=`${currentQRIndex+1} / ${currentQRData.length||0}`; }
+
+  document.getElementById('generateBtn').onclick=processFile;
+  document.getElementById('copyAllBtn').onclick=copyAllLinks;
+  document.getElementById('exportBtn').onclick=exportToCSV;
+  document.getElementById('openQRBtn').onclick=openQRModal;
+  document.getElementById('clearAllBtn').onclick=()=>{ currentData=[]; filteredData=[]; document.querySelector('#linkTable tbody').innerHTML=''; document.getElementById('fileInput').value=''; document.getElementById('fileName').innerText='No file selected'; document.getElementById('copyAllBtn').disabled=true; document.getElementById('exportBtn').disabled=true; document.getElementById('openQRBtn').disabled=true; document.getElementById('searchBox').disabled=true; document.getElementById('searchBtn').disabled=true; document.getElementById('clearSearchBtn').disabled=true; document.getElementById('salesTypeFilters').style.display='none'; document.getElementById('copyStatsDisplay').style.display='none'; closeQRModal(); showStatus('Cleared all data (tracker persists)'); };
+  document.getElementById('fileInput').addEventListener('change',(e)=>{ const name=e.target.files[0]?.name||''; document.getElementById('fileName').innerText=name||'No file selected'; document.getElementById('generateBtn').disabled=!e.target.files.length; });
+  document.getElementById('searchBtn').onclick=searchOrderId; document.getElementById('clearSearchBtn').onclick=clearSearch;
+  document.querySelectorAll('#salesTypeFilters .filter-btn').forEach(btn=>{ btn.addEventListener('click',function(){ document.querySelectorAll('#salesTypeFilters .filter-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); const type=this.dataset.type; if(type==='all') displayData(currentData); else displayData(currentData.filter(d=>d.salesType===type)); }); });
+  document.querySelectorAll('#qrFilters .filter-btn').forEach(btn=>{ btn.addEventListener('click',function(){ document.querySelectorAll('#qrFilters .filter-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); const type=this.dataset.type; if(type==='all') generateQRCodes(currentData); else generateQRCodes(currentData.filter(d=>d.salesType===type)); }); });
+  document.getElementById('prevBtn').onclick=prevQR; document.getElementById('nextBtn').onclick=nextQR;
+  window.onclick=e=>{ if(e.target===document.getElementById('qrModal')) closeQRModal(); };
 </script>
 </body>
 </html>
